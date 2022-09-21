@@ -1,7 +1,7 @@
 const { Configuration, OpenAIApi } = require('openai');
 
 const configuration = new Configuration({
-  apiKey: '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',
+  apiKey: '',
 });
 const openai = new OpenAIApi(configuration);
 
@@ -11,7 +11,7 @@ module.exports = {
       model: 'text-davinci-002',
       prompt: full_prompt_state,
       temperature: 1,
-      max_tokens: 256,
+      max_tokens: 200,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,

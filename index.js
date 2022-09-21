@@ -23,7 +23,7 @@ app.get('/model', (req, res) => {
 app.get('/invoke', async (req, res) => {
   //assume the happy path, save an engineer
   const pipeline = 'trinity';
-  const original_prompt = req.query['user_prompt'];
+  const original_prompt = req.query['invocation'];
   const full_prompt =
     pretrained_model + original_prompt + '\nBEST PROMPT EVER:';
   const gpt = require('./model/davinci_api');
@@ -32,8 +32,8 @@ app.get('/invoke', async (req, res) => {
 
   console.log('PROMPT', JSON.stringify(full_prompt));
   const result = await gpt.query_davinci(full_prompt);
-  console.log('RESPONSE', JSON.stringify(result.data));
-  res.send(result.data);
+  console.log('RESPONSE', JSON.stringify(result.data.choices[0]));
+  res.send(result.data.choices[0]);
 });
 
 app.listen(port, () => {
