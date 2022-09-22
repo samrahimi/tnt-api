@@ -1,7 +1,7 @@
 const { Configuration, OpenAIApi } = require('openai');
-
+const credentials = require('./config');
 const configuration = new Configuration({
-  apiKey: '',
+  apiKey: credentials.api_key,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -15,7 +15,7 @@ module.exports = {
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
-      stop: ['***'],
+      stop: ['\n***\n'],
     });
     return response;
   },
