@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
 app.get('/model', (req, res) => {
   res.send(pretrained_model);
 });
+
 app.get('/invoke', async (req, res) => {
   //assume the happy path, save an engineer
   const pipeline = 'trinity';
